@@ -1,6 +1,6 @@
 # BM
 ---
-
+``` console
 Create secure cloud infrastructure
 
 # set -o vi
@@ -62,3 +62,4 @@ Create secure cloud infrastructure
 # https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-centos-7
 
 . . . . . . . 
+```
