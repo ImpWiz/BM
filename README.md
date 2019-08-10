@@ -1,7 +1,7 @@
 # BM
 ---
 ``` console
-## Create secure cloud infrastructure
+# Create secure cloud infrastructure
 
 set -o vi
 vim /etc/selinux/config
