@@ -17,31 +17,32 @@ cksum /etc/selinux/config*
 
 sudo vim /etc/selinux/config
 
-## In this file change  SELINUX=enforcing
-##   change SELINUX=enforcing
-##   to 
-##   SELINUX=disabled
+# In this file change  SELINUX=enforcing
+#   change SELINUX=enforcing
+#   to 
+#   SELINUX=disabled
 
-# sudo reboot
+sudo reboot
 
-# diff `ls /etc/selinux/config*`
+diff `ls /etc/selinux/config*`
 
-# ## - Kubernetes based stack for running applications
+# - Kubernetes based stack for running applications
 
 # ----- ----- ------
 # https://www.howtoforge.com/tutorial/centos-kubernetes-docker-cluster/
 
-# sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
-# sudo swapoff -a
-# vim /etc/fstab
-# yum install -y yum-utils device-mapper-persistent-data lvm2
-# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-# sudo yum update 
-# yum install -y docker-ce
+sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+sudo swapoff -a
+vim /etc/fstab
+yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum update 
+yum install -y docker-ce
 
 # ----- ----- ------
 # https://myopswork.com/how-to-install-kubernetes-k8-in-rhel-or-centos-in-just-7-steps-2b78331174a5
-# vim /etc/yum.repos.d/kubernetes.repo
+
+vim /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 
 
