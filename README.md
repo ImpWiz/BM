@@ -1,16 +1,18 @@
 # BM
 ---
+Create secure cloud infrastructure
+
 ``` console
-# Create secure cloud infrastructure
 
 set -o vi
 vim /etc/selinux/config
 sudo yum update 
 sudo yum install vim 
+```
 
-# ----- ----- ------
+---
 # https://www.tutorialkart.com/bash-shell-scripting/bash-date-format-options-examples/
-
+``` console
 sudo cp /etc/selinux/config /etc/selinux/config.`date +%d%b%Y.%H%M%S`
 ls /etc/selinux/config*
 cksum /etc/selinux/config*
@@ -25,6 +27,7 @@ sudo vim /etc/selinux/config
 sudo reboot
 
 diff `ls /etc/selinux/config*`
+```
 
 # - Kubernetes based stack for running applications
 
