@@ -11,7 +11,7 @@ sudo yum install vim
 ```
 
 ---
-# https://www.tutorialkart.com/bash-shell-scripting/bash-date-format-options-examples/
+### https://www.tutorialkart.com/bash-shell-scripting/bash-date-format-options-examples/
 ``` console
 sudo cp /etc/selinux/config /etc/selinux/config.`date +%d%b%Y.%H%M%S`
 ls /etc/selinux/config*
