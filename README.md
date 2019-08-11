@@ -86,6 +86,10 @@ get nodes
 ``` console
 # Perform All of the steps on all worker Nodes
 
+# 1st step is to set the etc hostname
+vi /etc/hostname
+vi /etc/hosts
+
 # Update System
 sudo yum -y update && sudo yum -y install epel-release
 
@@ -101,16 +105,21 @@ diff `ls /etc/selinux/config*`
 # Add Docker Repo
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
- # >> >> >>  kubernetes.repo (( File Under <> Code ))
+# Add Kubernetes Repo
+# >> >> >>  kubernetes.repo (( File Under <> Code ))
 vi /etc/yum.repos.d/kubernetes.repo
 
 yum update
 
+echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+
+reboot
+
+yum  install kubeadm docker -y
 
 
-# 1st step is to set the etc hostname
-vi /etc/hostname
-vi /etc/hosts
+
+
 
 
 
@@ -124,6 +133,8 @@ vi /etc/hosts
 aws ec2 authorize-security-group-ingress --group-name imubit --protocol tcp --port 10251 --cidr 0.0.0.0/0
 ```
 
+# OLD NOTES
+---
 ---
 ### https://www.tutorialkart.com/bash-shell-scripting/bash-date-format-options-examples/
 ``` console
