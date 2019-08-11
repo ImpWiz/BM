@@ -91,8 +91,23 @@ kubeadm token create
 # Perform All of the steps on all worker Nodes
 
 # 1st step is to set the etc hostname
+sudo su
 vi /etc/hostname
+- - - - - 
+worker
+- - - - - 
+
 vi /etc/hosts
+- - - - - 
+<Private IP of Master>   Master
+- - - - -
+
+vi /etc/sysconfig/network
+- - - - - 
+
+- - - - - 
+
+
 
 # Update System
 sudo yum -y update && sudo yum -y install epel-release
@@ -131,8 +146,10 @@ systemctl status kubelet
 
 # <Token> is from >> Master command kubeadm token create
 kubeadm join --discovery-token-unsafe-skip-ca-verificatio  --token <Token>  <Private IP of Server>:<Port>
+kubeadm join  --discovery-token-unsafe-skip-ca-verification  --token 4kq6ie.8g9ldc6cp78trbuk 172.31.35.243:6443
 
 
+reboot
 
 
 ```
