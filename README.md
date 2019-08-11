@@ -13,6 +13,16 @@ sudo cp /etc/selinux/config /etc/selinux/config.`date +%d%b%Y.%H%M%S`
 sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 swapoff -a
 ls /etc/selinux/config*
+cksum /etc/selinux/config*
+diff `ls /etc/selinux/config*`
+sudo reboot
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum update
+yum -y install docker-ce docker-ce-cli containerd.io
+
+# This shows Available Docker Versions
+yum list docker-ce --showduplicates | sort -r
+vi /etc/yum.repos.d/kubernetes.repo
 
 ```
 
