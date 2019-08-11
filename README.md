@@ -66,6 +66,10 @@ vi /etc/hosts
 172.31.35.243  master
 172.31.41.0   worker
 
+vi /etc/sysconfig/network
+>>
+HOSTNAME=master
+<<
 
 ```
 ---
