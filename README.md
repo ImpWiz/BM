@@ -127,6 +127,7 @@ systemctl enable docker
 
 systemctl enable kubelet
 systemctl start kublet
+systemctl status kubelet
 
 # <Token> is from >> Master command kubeadm token create
 kubeadm join --discovery-token-unsafe-skip-ca-verificatio  --token <Token>  <Private IP of Server>:<Port>
@@ -138,10 +139,19 @@ kubeadm join --discovery-token-unsafe-skip-ca-verificatio  --token <Token>  <Pri
 
 
 ---
-# How to open ports in aws security group
+# AWS CLI Notes 
 ---
 ``` console
+# How to open ports in aws security group <example>
 aws ec2 authorize-security-group-ingress --group-name imubit --protocol tcp --port 10251 --cidr 0.0.0.0/0
+
+# To Terminate an Instance <example>
+aws ec2 terminate-instances --instance-ids i-0efacc77213d88f40
+
+# To Create an Instance <example>
+aws ec2 run-instances --image-id  ami-02eac2c0129f6376b --count 1 --instance-type t2.medium --key-name imubit --security-group-ids sg-0972092ea71ebf687 --subnet-id subnet-3ab84b67 --region us-east-1
+
+
 ```
 
 # OLD NOTES
