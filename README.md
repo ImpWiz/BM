@@ -66,8 +66,10 @@ modprobe br_netfilter
 echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
 
 vi /etc/hosts
+- - - - - 
 <IP>  master
 <IP>  worker
+- - - - - 
 
 vi /etc/sysconfig/network
 - - - - - 
@@ -84,13 +86,40 @@ get nodes
 ``` console
 # Perform All of the steps on all worker Nodes
 
+# Update System
+sudo yum -y update && sudo yum -y install epel-release
+
+# Disable SeLinux
+
+cp /etc/selinux/config /etc/selinux/config.`date +%d%b%Y.%H%M%S`
+sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+swapoff -a
+ls /etc/selinux/config*
+cksum /etc/selinux/config*
+diff `ls /etc/selinux/config*`
+
+# Add Docker Repo
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+ # >> >> >>  kubernetes.repo (( File Under <> Code ))
+vi /etc/yum.repos.d/kubernetes.repo
+
+yum update
+
+
+
+# 1st step is to set the etc hostname
 vi /etc/hostname
 vi /etc/hosts
+
+
+
 ```
 
 
-
+---
 # How to open ports in aws security group
+---
 ``` console
 aws ec2 authorize-security-group-ingress --group-name imubit --protocol tcp --port 10251 --cidr 0.0.0.0/0
 ```
