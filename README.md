@@ -26,7 +26,7 @@ yum -y install docker-ce docker-ce-cli containerd.io
 # This shows Available Docker Versions
 yum list docker-ce --showduplicates | sort -r
 
-## File included under BM
+# - - - >>  File included under BM
 vi /etc/yum.repos.d/kubernetes.repo
 
 yum update
