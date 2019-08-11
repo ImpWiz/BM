@@ -55,11 +55,32 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 systemctl status docker
 systemctl status kubelet
 
+# <IF> Token is not on screen run this command to create a join token for workers
+# >> kubean init
+
+
+modprobe br_netfilter
+echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+
+vi /etc/hosts
+172.31.35.243  master
+172.31.41.0   worker
+
+
 ```
 ---
 ## Worker Config
 ---
 
+vi /etc/hostname
+vi /etc/hosts
+
+
+
+# How to open ports in aws security group
+``` console
+aws ec2 authorize-security-group-ingress --group-name imubit --protocol tcp --port 10251 --cidr 0.0.0.0/0
+```
 
 ---
 ### https://www.tutorialkart.com/bash-shell-scripting/bash-date-format-options-examples/
