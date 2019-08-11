@@ -66,23 +66,27 @@ modprobe br_netfilter
 echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
 
 vi /etc/hosts
-172.31.35.243  master
-172.31.41.0   worker
+<IP>  master
+<IP>  worker
 
 vi /etc/sysconfig/network
 - - - - - 
 HOSTNAME=master
 - - - - - 
 
+# this should show no nodes.
+get nodes
 
 ```
 ---
 ## Worker Config
 ---
+``` console
+# Perform All of the steps on all worker Nodes
 
 vi /etc/hostname
 vi /etc/hosts
-
+```
 
 
 
