@@ -107,6 +107,7 @@ vi /etc/sysconfig/network
 
 - - - - - 
 
+reboot
 
 
 # Update System
@@ -132,7 +133,7 @@ yum update
 
 echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
 
-reboot
+
 
 yum  install kubeadm docker -y
 
