@@ -24,7 +24,44 @@ yum -y install docker-ce docker-ce-cli containerd.io
 yum list docker-ce --showduplicates | sort -r
 vi /etc/yum.repos.d/kubernetes.repo
 
+yum update
+yum install -y kubelet kubeadm kubectl
+
+# This Starts Docker
+systemctl start docker
+
+
+
+# This enables Docker to Start at Boot
+systemctl enable docker
+
+# This will start Kubernetics, and it is ok if it fails
+systemctl start kubelet
+
+# This Allows Kerbentics to run at Boot
+systemctl enable kubelet
+
+sudo kubeadm init 
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
+# To start using your cluseter, you will need to run the following as a regular user
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
+systemctl status docker
+systemctl status kubelet
+
 ```
+---
+## Worker Config
+---
+
 
 ---
 ### https://www.tutorialkart.com/bash-shell-scripting/bash-date-format-options-examples/
