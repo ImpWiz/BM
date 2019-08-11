@@ -128,7 +128,8 @@ systemctl enable docker
 systemctl enable kubelet
 systemctl start kublet
 
-kubeadm join --discovery-token-unsafe-skip-ca-verificatio  --token  <From.Master.. kubeadm token create>  <Private IP of Server>:<Port>
+# <Token> is from >> Master command kubeadm token create
+kubeadm join --discovery-token-unsafe-skip-ca-verificatio  --token <Token>  <Private IP of Server>:<Port>
 
 
 
