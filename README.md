@@ -79,6 +79,10 @@ HOSTNAME=master
 # this should show no nodes.
 get nodes
 
+# This will be done while the worker is getting configured.
+kubeadm token create
+
+
 ```
 ---
 ## Worker Config
@@ -118,7 +122,13 @@ reboot
 yum  install kubeadm docker -y
 
 
+systemctl restart docker
+systemctl enable docker
 
+systemctl enable kubelet
+systemctl start kublet
+
+kubeadm join --discovery-token-unsafe-skip-ca-verificatio  --token  <From.Master.. kubeadm token create>  <Private IP of Server>:<Port>
 
 
 
