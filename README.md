@@ -23,6 +23,8 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 yum update
 yum -y install docker-ce docker-ce-cli containerd.io
 
+yum install -y yum-utils device-mapper-persistent-data lvm2
+
 # This shows Available Docker Versions
 yum list docker-ce --showduplicates | sort -r
 
@@ -46,6 +48,7 @@ systemctl start kubelet
 systemctl enable kubelet
 
 sudo kubeadm init 
+kubectl get nodes
 
 # To start using your cluseter, you will need to run the following as a regular user
 mkdir -p $HOME/.kube
@@ -67,9 +70,10 @@ vi /etc/hosts
 172.31.41.0   worker
 
 vi /etc/sysconfig/network
->>
+- - - - - 
 HOSTNAME=master
-<<
+- - - - - 
+
 
 ```
 ---
@@ -78,6 +82,7 @@ HOSTNAME=master
 
 vi /etc/hostname
 vi /etc/hosts
+
 
 
 
