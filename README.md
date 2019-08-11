@@ -2,6 +2,9 @@
 ---
 Create secure cloud infrastructure
 
+https://www.datawire.io/guide/infrastructure/setting-kubernetes-aws/
+
+
 
 ## MASTER
 
@@ -30,10 +33,9 @@ yum install -y kubelet kubeadm kubectl
 # This Starts Docker
 systemctl start docker
 
-
-
 # This enables Docker to Start at Boot
 systemctl enable docker
+
 
 # This will start Kubernetics, and it is ok if it fails
 systemctl start kubelet
@@ -43,16 +45,10 @@ systemctl enable kubelet
 
 sudo kubeadm init 
 
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-
 # To start using your cluseter, you will need to run the following as a regular user
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
 
 systemctl status docker
 systemctl status kubelet
