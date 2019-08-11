@@ -2,12 +2,18 @@
 ---
 Create secure cloud infrastructure
 
+
+## MASTER
+
 ``` console
 
 set -o vi
-vim /etc/selinux/config
-sudo yum update 
-sudo yum install vim 
+sudo yum -y update && sudo yum -y install epel-release
+sudo cp /etc/selinux/config /etc/selinux/config.`date +%d%b%Y.%H%M%S`
+sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+swapoff -a
+ls /etc/selinux/config*
+
 ```
 
 ---
